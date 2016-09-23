@@ -37,7 +37,7 @@ namespace Orchard.Hosting
         {
             services.AddWebHost();
 
-            services.ConfigureShell("Sites");
+            services.AddMultiTenancy("Sites");
 
             services.AddOrchardMvc();
             services.AddModuleFolder("Modules");

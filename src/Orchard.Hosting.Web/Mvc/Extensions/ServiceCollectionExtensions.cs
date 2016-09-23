@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Orchard.DisplayManagement.ModelBinding;
 using Orchard.DisplayManagement.TagHelpers;
 using Orchard.Environment.Extensions;
+using Orchard.Environment.Extensions.Folders;
 using Orchard.Hosting.Mvc.Filters;
 using Orchard.Hosting.Mvc.ModelBinding;
 using Orchard.Hosting.Mvc.Razor;
@@ -22,11 +23,19 @@ namespace Orchard.Hosting.Mvc
     {
         public static IServiceCollection AddOrchardMvc(this IServiceCollection services)
         {
-            return AddOrchardMvc(services, null);
+            return AddOrchardMvc(services, "Modules", null);
         }
 
-        public static IServiceCollection AddOrchardMvc(this IServiceCollection services, Action<MvcOptions> setupAction)
+        public static IServiceCollection AddOrchardMvc(this IServiceCollection services, string modulesPath)
         {
+            return AddOrchardMvc(services, modulesPath, null);
+        }
+
+        public static IServiceCollection AddOrchardMvc(this IServiceCollection services, string modulesPath, Action<MvcOptions> setupAction)
+        {
+            services.AddWebHost();
+            services.AddModuleFolder(modulesPath);
+
             services
                 .AddMvcCore(options =>
                 {
@@ -53,6 +62,10 @@ namespace Orchard.Hosting.Mvc
                 var extensionLibraryService = services.BuildServiceProvider().GetService<IExtensionLibraryService>();
                 ((List<MetadataReference>)options.AdditionalCompilationReferences).AddRange(extensionLibraryService.MetadataReferences());
             });
+
+            // Register the list of services to be resolved later on,
+            // hence AddOrchardMvc should be the last method called
+            services.AddSingleton(_ => services);
 
             return services;
         }

@@ -14,17 +14,11 @@ namespace Orchard.Cms
     {
         public static IServiceCollection AddOrchardCms(this IServiceCollection services)
         {
-            services.AddWebHost();
-
             services.AddTheming();
             services.AddThemeFolder("Themes");
-            services.ConfigureShell("Sites");
 
+            services.AddMultiTenancy("Sites");
             services.AddOrchardMvc();
-            services.AddModuleFolder("Modules");
-
-            // Save the list of service definitions
-            services.AddSingleton(_ => services);
 
             return services;
         }

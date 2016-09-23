@@ -21,7 +21,8 @@ namespace Orchard.Hosting
             IHostingEnvironment hostingEnvironment,
             ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddOrchardLogging(builder.ApplicationServices);
+            // TODO: Load logger configuration
+            // loggerFactory.AddConsole(LogLevel.Error);
 
             var extensionManager = builder.ApplicationServices.GetRequiredService<IExtensionManager>();
 
@@ -72,6 +73,8 @@ namespace Orchard.Hosting
                     // TODO: An extension couldn't be loaded, log
                 }
             });
+
+            // TODO: Why isn't it using the logger ?
 
             var message = $"Overall time to dynamically compile and load extensions: {sw.Elapsed}";
 

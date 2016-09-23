@@ -15,6 +15,7 @@ namespace Orchard.Environment.Shell.Descriptor.Settings
         private readonly IEventBus _eventBus;
         private readonly ISession _session;
         private readonly ILogger _logger;
+        private ShellDescriptor _shellDescriptor;
 
         public ShellDescriptorManager(
             ShellSettings shellSettings,
@@ -28,9 +29,15 @@ namespace Orchard.Environment.Shell.Descriptor.Settings
             _logger = logger;
         }
 
-        public Task<ShellDescriptor> GetShellDescriptorAsync()
+        public async Task<ShellDescriptor> GetShellDescriptorAsync()
         {
-            return _session.QueryAsync<ShellDescriptor>().FirstOrDefault();
+            // Prevent multiple queries during the same request
+            if (_shellDescriptor == null)
+            {
+                _shellDescriptor = await _session.QueryAsync<ShellDescriptor>().FirstOrDefault();
+            }
+
+            return _shellDescriptor;
         }
 
         public async Task UpdateShellDescriptorAsync(int priorSerialNumber, IEnumerable<ShellFeature> enabledFeatures, IEnumerable<ShellParameter> parameters)
@@ -92,6 +99,9 @@ namespace Orchard.Environment.Shell.Descriptor.Settings
             }
 
             _session.Save(shellDescriptorRecord);
+
+            // Update cached reference
+            _shellDescriptor = shellDescriptorRecord;
 
             await _eventBus.NotifyAsync<IShellDescriptorManagerEventHandler>(e => e.Changed(shellDescriptorRecord, _shellSettings.Name));
         }

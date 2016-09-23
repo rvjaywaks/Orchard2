@@ -10,6 +10,14 @@ namespace HelloWorld
     {
         public override void Configure(IApplicationBuilder builder, IRouteBuilder routes, IServiceProvider serviceProvider)
         {
+            routes.MapAreaRoute
+            (
+                name: "Home",
+                area: "HelloWorld",
+                template: "",
+                controller: "Home",
+                action: "Index"
+            );
         }
 
         public override void ConfigureServices(IServiceCollection serviceCollection)

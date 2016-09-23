@@ -89,16 +89,17 @@ namespace Orchard.Environment.Shell.Builders
             return new ShellDescriptor
             {
                 SerialNumber = -1,
-                Features = new[]
-                {
-                    new ShellFeature { Name = "Orchard.Logging.Console" },
-                    new ShellFeature { Name = "Orchard.Hosting" },
-                    new ShellFeature { Name = "Orchard.Admin" },
-                    new ShellFeature { Name = "Orchard.Themes" },
-                    new ShellFeature { Name = "TheAdmin" },
-                    new ShellFeature { Name = "SafeMode" },
-                    new ShellFeature { Name = "Orchard.Recipes" }
-                },
+                Features = new List<ShellFeature>(),
+                //Features = new[]
+                //{
+                //    new ShellFeature { Name = "Orchard.Logging.Console" },
+                //    new ShellFeature { Name = "Orchard.Hosting" },
+                //    new ShellFeature { Name = "Orchard.Admin" },
+                //    new ShellFeature { Name = "Orchard.Themes" },
+                //    new ShellFeature { Name = "TheAdmin" },
+                //    new ShellFeature { Name = "SafeMode" },
+                //    new ShellFeature { Name = "Orchard.Recipes" }
+                //},
                 Parameters = new List<ShellParameter>()
             };
         }
