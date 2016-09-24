@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Orchard
+namespace Microsoft.AspNetCore.Mvc.Modules
 {
     public abstract class StartupBase : IStartup
     {

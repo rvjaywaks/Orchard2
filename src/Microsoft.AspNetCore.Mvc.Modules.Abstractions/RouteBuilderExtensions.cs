@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
-namespace Orchard
+namespace Microsoft.AspNetCore.Builder
 {
     public static class RouteBuilderExtensions
     {
-        // TODO: Remove when https://github.com/aspnet/Mvc/issues/4846 is fixed
+        // TODO: Remove when https://github.com/aspnet/Mvc/issues/4846 is fixed (1.1.0)
         public static IRouteBuilder MapAreaRoute(this IRouteBuilder routeBuilder,
             string name,
             string area,

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Mvc.Modules;
+using Microsoft.Extensions.DependencyInjection;
 using Orchard.BackgroundTasks;
 using Orchard.Data;
 using Orchard.DeferredTasks;
@@ -13,10 +14,7 @@ namespace Orchard.Hosting
     {
         public override void ConfigureServices(IServiceCollection serviceCollection)
         {
-            serviceCollection.AddDeferredTasks();
-            serviceCollection.AddDataAccess();
             serviceCollection.AddResourceManagement();
-            serviceCollection.AddBackgroundTasks();
         }
     }
 }

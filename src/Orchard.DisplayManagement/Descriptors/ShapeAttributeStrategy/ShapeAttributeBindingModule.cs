@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Orchard.DisplayManagement.TagHelpers;
+using Microsoft.AspNetCore.Mvc.Modules;
 
 namespace Orchard.DisplayManagement.Descriptors.ShapeAttributeStrategy
 {

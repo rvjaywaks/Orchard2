@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Orchard
+namespace Microsoft.AspNetCore.Mvc.Modules
 {
     /// <summary>
     /// TODO: After RTM, resolve IStartup using the Application container, but inject tenant services in the Configure method.

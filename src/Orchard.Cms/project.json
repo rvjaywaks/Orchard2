@@ -4,7 +4,7 @@
   "dependencies": {
     "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
     "Orchard.Hosting.Console": "2.0.0-*",
-    "Orchard.Hosting.Web": "2.0.0-*",
+    "Microsoft.AspNetCore.Mvc.Modules.Hosting": "1.0.0-*",
     "NETStandard.Library": "1.6.0"
   },
 

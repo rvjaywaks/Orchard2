@@ -57,7 +57,7 @@ namespace Orchard.Environment.Shell.Builders
 
             var excludedTypes = GetExcludedTypes(features);
 
-            var modules = BuildBlueprint(features, IsModule, BuildModule, excludedTypes);
+            var modules = BuildBlueprint(features, IsStartup, BuildModule, excludedTypes);
             var dependencies = BuildBlueprint(features, IsDependency, (t, f) => BuildDependency(t, f, descriptor),
                 excludedTypes);
 
@@ -179,9 +179,9 @@ namespace Orchard.Environment.Shell.Builders
                 .ToArray();
         }
 
-        private static bool IsModule(Type type)
+        private static bool IsStartup(Type type)
         {
-            return typeof(IStartup).IsAssignableFrom(type);
+            return typeof(Microsoft.AspNetCore.Mvc.Modules.IStartup).IsAssignableFrom(type);
         }
 
         private static DependencyBlueprint BuildModule(Type type, Feature feature)

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Mvc.Modules;
+using Microsoft.Extensions.DependencyInjection;
 using Orchard.DisplayManagement.Implementation;
 using Orchard.DynamicCache.Services;
 using Orchard.Environment.Cache.Abstractions;
@@ -8,7 +9,7 @@ namespace Orchard.DynamicCache
     /// <summary>
     /// These services are registered on the tenant service collection
     /// </summary>
-    public class Module : StartupBase
+    public class Startup : StartupBase
     {
         public override void ConfigureServices(IServiceCollection services)
         {

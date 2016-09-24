@@ -9,14 +9,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Orchard.Environment.Extensions;
-using Orchard.Hosting.Extensions;
+using Orchard.Hosting;
 using Orchard.Hosting.Web.Routing;
 
-namespace Orchard.Hosting
+namespace Microsoft.AspNetCore.Mvc.Modules.Hosting
 {
     public static class ApplicationBuilderExtensions
     {
-        public static IApplicationBuilder ConfigureWebHost(
+        public static IApplicationBuilder UseModules(
             this IApplicationBuilder builder,
             IHostingEnvironment hostingEnvironment,
             ILoggerFactory loggerFactory)

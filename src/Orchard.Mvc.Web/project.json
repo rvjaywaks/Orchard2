@@ -11,7 +11,7 @@
     "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
     "Microsoft.AspNetCore.Routing": "1.0.0",
     "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.0.0",
-    "Orchard.Hosting.Web": "2.0.0-*"
+    "Microsoft.AspNetCore.Mvc.Modules.Hosting": "1.0.0-*"
   },
 
   "tools": {
