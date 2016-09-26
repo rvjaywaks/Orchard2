@@ -20,10 +20,6 @@ namespace Orchard.Cms
             services.AddThemeFolder("Themes");
             services.AddMultiTenancy("Sites");
 
-            services.AddDeferredTasks();
-            services.AddDataAccess();
-            services.AddBackgroundTasks();
-
             services.AddModuleServices();
 
             return services;

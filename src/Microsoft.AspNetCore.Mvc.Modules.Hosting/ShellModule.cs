@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Modules;
 using Microsoft.Extensions.DependencyInjection;
-using Orchard.BackgroundTasks;
-using Orchard.Data;
-using Orchard.DeferredTasks;
-using Orchard.ResourceManagement;
 
 namespace Orchard.Hosting
 {
@@ -14,7 +10,6 @@ namespace Orchard.Hosting
     {
         public override void ConfigureServices(IServiceCollection serviceCollection)
         {
-            serviceCollection.AddResourceManagement();
         }
     }
 }
